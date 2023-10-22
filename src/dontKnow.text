@@ -1,0 +1,54 @@
+클래스 설계 STEP
+1. 클래스 선언: 만들려고 하는 설계도 선언
+public class car{}
+
+2. 속성(필드) 정의: 객체가 가지고 있어야할 속성(필드)를 정의
+public class car{
+    String company
+    String model;
+    double price;
+    char gear;
+    boolean lights;
+}
+
+3. 생성자 정의: 객체를 생성하는 방식 정의
+    - 인스턴스: 클래스를 토대로 생성된 객체
+    - 생성자: 인스턴스가 생성될 때 호출되는 인스턴스 초기화 메서드
+        - 클래스 객체가 생성될 때 반드시 실행되는 메소드
+public class car{
+    String company
+    String model;
+    double price;
+    double speed;
+    char gear;
+    boolean lights;
+
+    public Car() {}
+}
+
+4. 메서드 정의: 객체가 가지고 있어야할 행위(메서드)를 정의
+public class car{
+    String company
+    String model;
+    double price;
+    double speed;
+    char gear;
+    boolean lights;
+
+    public car() {}
+
+    double gasPedal(double kmh) {
+        speed = kmh;
+        return speed;
+    }
+
+    char changeGear(char type) {
+        speed = 0;
+        return speed;
+    }
+
+    boolean onOffLights() {
+        light = !lights;
+        return lights;
+    }
+}
