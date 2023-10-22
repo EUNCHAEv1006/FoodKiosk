@@ -63,12 +63,19 @@ class Order {
 
 public class Main {
     public static void main(String[] args) {
-        Menu mainMenu = new Menu("SHAKESHACK BURGER 에 오신걸 환영합니다.", "아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.");
+        Menu mainMenu = new Menu("\"SHAKESHACK BURGER에 오신걸 환영합니다.\"", "아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.");
         Product burger1 = new Product("ShackBurger", "토마토, 양상추, 쉑소스가 토핑된 치즈버거", 6.9);
         Product burger2 = new Product("SmokeShack", "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거", 8.9);
         Product burger3 = new Product("Shroom Burger", "몬스터 치즈와 체다 치즈로 속을 채운 베지테리안 버거", 9.4);
         Product burger4 = new Product("Cheeseburger", "포테이토 번과 비프패티, 치즈가 토핑된 치즈버거", 6.9);
         Product burger5 = new Product("Hamburger", "비프패티를 기반으로 야채가 들어간 기본버거", 5.4);
+
+        Product drink1 = new Product("Shack-made Lemonade", "매장에서 직접 만드는 상큼한 레몬에이드", 3.9);
+        Product drink2 = new Product("Fresh Brewed Iced Tea", "직접 유기농 홍차를 우려낸 아이스티", 3.4);
+        Product drink3 = new Product("Fifty/Fifty", "레몬에이드와 아이스티의 만남", 3.5);
+        Product drink4 = new Product("Fountain Soda", "코카콜라, 코카콜라 제로, 스프라이트, 환타 오렌지, 환타 그레이프", 2.7);
+        Product drink5 = new Product("Abita Root Beer", "청량감 있는 독특한 미국식 무알콜 탄산음료", 4.4);
+        Product drink6 = new Product("Bottled Water", "지리산 암반대수층으로 만든 프리미엄 생수", 1.0);
 
         Order order = new Order();
         Scanner scanner = new Scanner(System.in);
@@ -79,16 +86,19 @@ public class Main {
         do {
             System.out.println(mainMenu.getName());
             System.out.println(mainMenu.getDescription());
+            System.out.println();
 
             System.out.println("[ SHAKESHACK MENU ]");
             System.out.println("1. Burgers         | 앵거스 비프 통살을 다져만든 버거");
             System.out.println("2. Frozen Custard  | 매장에서 신선하게 만드는 아이스크림");
             System.out.println("3. Drinks          | 매장에서 직접 만드는 음료");
             System.out.println("4. Beer            | 뉴욕 브루클린 브루어리에서 양조한 맥주");
+            System.out.println();
 
             System.out.println("[ ORDER MENU ]");
             System.out.println("5. Order       | 장바구니를 확인 후 주문합니다.");
             System.out.println("6. Cancel      | 진행중인 주문을 취소합니다.");
+            System.out.println();
 
             System.out.print("선택: ");
             choice = scanner.nextInt();
@@ -102,9 +112,11 @@ public class Main {
                     // Frozen Custard 메뉴 추가
                     break;
                 case 3:
+                    showDrinksMenu(drink1, drink2, drink3, drink3, drink4, drink5, drink6, order);
+                    break;
                     // Drinks 메뉴 출력
                     // Drinks 메뉴 추가
-                    break;
+
                 case 4:
                     // Beer 메뉴 출력
                     // Beer 메뉴 추가
@@ -138,11 +150,14 @@ public class Main {
     }
 
     // 상품 메뉴 출력
+
     private static void showBurgersMenu(Product burger1, Product burger2, Product burger3, Product burger4, Product burger5, Order order) {
         Scanner scanner = new Scanner(System.in);
         int choice;
         do {
             System.out.println("아래 상품메뉴판을 보시고 상품을 골라 입력해주세요.");
+            System.out.println();
+
             System.out.println("[ Burgers MENU ]");
             System.out.println("1. " + burger1.getName() + " | W " + burger1.getPrice() + " | " + burger1.getDescription());
             System.out.println("2. " + burger2.getName() + " | W " + burger2.getPrice() + " | " + burger2.getDescription());
@@ -177,6 +192,54 @@ public class Main {
                     break;
             }
         } while (choice != 6);
+    }
+
+    private static void showDrinksMenu(Product drink1, Product drink2, Product drink3, Product drink31, Product drink4, Product drink5, Product drink6, Order order) {
+        Scanner scanner = new Scanner(System.in);
+        int choice;
+        do {
+            System.out.println("아래 상품메뉴판을 보시고 상품을 골라 입력해주세요.");
+            System.out.println();
+
+            System.out.println("[ Drinks MENU ]");
+            System.out.println("1. " + drink1.getName() + " | W " + drink1.getPrice() + " | " + drink1.getDescription());
+            System.out.println("2. " + drink2.getName() + " | W " + drink2.getPrice() + " | " + drink2.getDescription());
+            System.out.println("3. " + drink3.getName() + " | W " + drink3.getPrice() + " | " + drink3.getDescription());
+            System.out.println("4. " + drink4.getName() + " | W " + drink4.getPrice() + " | " + drink4.getDescription());
+            System.out.println("5. " + drink5.getName() + " | W " + drink5.getPrice() + " | " + drink5.getDescription());
+            System.out.println("6. " + drink6.getName() + " | W " + drink6.getPrice() + " | " + drink6.getDescription());
+            System.out.println("7. 메인 메뉴로 돌아가기");
+            System.out.println();
+
+            System.out.print("선택: ");
+            choice = scanner.nextInt();
+
+            switch (choice) {
+                case 1:
+                    addToCart(drink1, order);
+                    break;
+                case 2:
+                    addToCart(drink2, order);
+                    break;
+                case 3:
+                    addToCart(drink3, order);
+                    break;
+                case 4:
+                    addToCart(drink4, order);
+                    break;
+                case 5:
+                    addToCart(drink5, order);
+                    break;
+                case 6:
+                    addToCart(drink6, order);
+                    break;
+                case 7:
+                    break;
+                default:
+                    System.out.println("잘못된 선택입니다. 다시 선택해주세요.");
+                    break;
+            }
+        } while (choice != 7);
     }
 
     // 상품을 장바구니에 추가
