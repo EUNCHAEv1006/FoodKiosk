@@ -1,69 +1,11 @@
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 import java.util.concurrent.TimeUnit;
-
-// 메뉴 클래스
-class Menu {
-    private String name;
-    private String description;
-
-    public Menu(String name, String description) {
-        this.name = name;
-        this.description = description;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-}
-
-// 상품 클래스
-class Product extends Menu {
-    private double price;
-
-    public Product(String name, String description, double price) {
-        super(name, description);
-        this.price = price;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-}
-
-// 주문 클래스
-class Order {
-    public List<Product> products;
-
-    public Order() {
-        this.products = new ArrayList<>();
-    }
-
-    // 주문에 상품 추가
-    public void addProduct(Product product) {
-        products.add(product);
-    }
-
-    // 주문 취소
-    public void cancelOrder() {
-        products.clear();
-    }
-
-    // 주문 내역을 반환하는 메소드
-    public List<Product> getProducts() {
-        return products;
-    }
-}
 
 public class Main {
     public static void main(String[] args) {
 
         Menu mainMenu = new Menu("\"SHAKESHACK BURGER에 오신걸 환영합니다.\"", "아래 메뉴판을 보시고 메뉴를 골라 입력해주세요.");
+
         Product burger1 = new Product("ShackBurger", "토마토, 양상추, 쉑소스가 토핑된 치즈버거", 6.9);
         Product burger2 = new Product("SmokeShack", "베이컨, 체리 페퍼에 쉑소스가 토핑된 치즈버거", 8.9);
         Product burger3 = new Product("Shroom Burger", "몬스터 치즈와 체다 치즈로 속을 채운 베지테리안 버거", 9.4);
@@ -347,8 +289,9 @@ public class Main {
     private static void completeOrder(Order order, int orderNumber) {
         System.out.println("주문이 완료되었습니다!");
         System.out.println("대기번호는 [ " + orderNumber + " ] 번 입니다.");
-        System.out.println("(3초 후 메뉴판으로 돌아갑니다.)");
-
+        for (int i = 3; i<=1; i--){
+            System.out.println(i + "(초 후 메뉴판으로 돌아갑니다.)");
+        }
         try {
             TimeUnit.SECONDS.sleep(3);
         } catch (InterruptedException e) {
